@@ -31,14 +31,12 @@ const navigate = useNavigate();
     },
     validationSchema: loginValidation,
     onSubmit: (values) => {
-      // Simulate successful or failed form submission (for now, just log to console)
       if (!values.email || !values.password) {
         setErrorMessage("Please fill in all fields");
         setAlertOpen(true);
       } else {
         console.log(values.email, values.password);
-        navigate("/dashboard")
-        // Add logic for successful login (for example, navigating to a different page)
+        navigate("/products")
       }
     }
   });
