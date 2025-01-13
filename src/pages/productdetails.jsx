@@ -29,11 +29,11 @@ const [userReviews, setUserReviews] = useState([]);
       
       <div style={{display:'flex'}}>
         <div style={{display:'flex',}}>
-<div style={{width:'60%',border:'1px solid black',display:'flex',alignItems:'center',justifyContent:'center'}}>
+<div style={{width:'80%',display:'flex',alignItems:'center',justifyContent:'center'}}>
   
   <img src={productDetails?.images} alt="" style={{height:"500px",width:'500px'}}/>
   </div>
-<div style={{border:'1px solid black' ,display:'flex', flexDirection:'column',gap:'30px',alignItems:'center',}}>
+<div style={{padding:'20px 50px 20px 50px',borderLeft:'1px solid black' ,display:'flex', flexDirection:'column',gap:'30px',alignItems:'center',}}>
   <h3 >{productDetails?.title} - {productDetails.weight} GM</h3>
   
 <Rating name="half-rating-read" defaultValue={productDetails.rating} precision={0.5} readOnly />
@@ -69,7 +69,15 @@ const [userReviews, setUserReviews] = useState([]);
 
 {userReviews.map((ele,i)=>{
 return(
+  <div style={{border:'1px solid black'}}>
+<span>{ele.reviewerName}</span>
+<div>
+<Rating name="half-rating-read" defaultValue={ele.rating} precision={0.5} readOnly />
+
+</div>
+
 <p>{ele.comment}</p>
+  </div>
 
 )
 
