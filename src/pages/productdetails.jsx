@@ -27,30 +27,39 @@ const [userReviews, setUserReviews] = useState([]);
   return (
     <div>
       
-      <div style={{display:'flex'}}>
-        <div style={{display:'flex',}}>
-<div style={{width:'80%',display:'flex',alignItems:'center',justifyContent:'center'}}>
+      <div style={{display:'flex',justifyContent:'center'}}>
+        <div style={{display:'flex',justifyContent:'center'}}>
+<div style={{width:'70%',display:'flex',justifyContent:'end'}}>
   
   <img src={productDetails?.images} alt="" style={{height:"500px",width:'500px'}}/>
   </div>
-<div style={{padding:'20px 50px 20px 50px',borderLeft:'1px solid black' ,display:'flex', flexDirection:'column',gap:'30px',alignItems:'center',}}>
-  <h3 >{productDetails?.title} - {productDetails.weight} GM</h3>
+<div style={{display:'flex', flexDirection:'column',alignItems:'flex-start'}}>
+  <h3 >{productDetails?.title} </h3>
+  <span style={{display:'flex',gap:'5px'}}>
+<Rating name="half-rating-read" defaultValue={productDetails?.rating} precision={0.5} readOnly />
+{productDetails?.reviews?.length} Reviews
+  </span>
   
-<Rating name="half-rating-read" defaultValue={productDetails.rating} precision={0.5} readOnly />
 
   
-  
-<div>{productDetails.price}$</div>
-<p><span style={{fontSize:'18px',fontWeight:'bolder'}}>Brand :</span>{productDetails.brand}</p>
+  <div style={{fontSize:'22px'}}>{productDetails.price}$</div>
+  <p style={{fontWeight:'bold',fontSize:'14px'}}>
+    Wieght : {productDetails.weight} GM
+
+  </p>
+<div style={{border:'1px solid black',width:'20%',textAlign:'center',cursor:'pointer'}}>Add To Cart - {productDetails.price}$ </div>
+<div style={{border:'1px solid black',width:'20%',textAlign:'center',cursor:'pointer', backgroundColor:'gold'}}>Buy It Now</div>
+
+<p style={{width:'70%'}}> {productDetails?.description}</p> 
+
+
 <p><span style={{fontSize:'18px',fontWeight:'bolder'}}>Category :</span>  {productDetails.category}</p>
-<p> {productDetails?.description}</p> 
+<p><span style={{fontSize:'18px',fontWeight:'bolder'}}>Brand :</span>{productDetails.brand}</p>
 <p><span style={{fontSize:'15px',fontWeight:'bolder'}}>Stocks :</span>   {productDetails?.stock}</p>
 <p><span style={{fontSize:'15px',fontWeight:'bolder'}}>Shipping Time :</span>  {productDetails.shippingInformation}</p>
 <p><span style={{fontSize:'15px',fontWeight:'bolder'}}>Warranty :</span>  {productDetails.warrantyInformation}</p>
 <p><span style={{fontSize:'15px',fontWeight:'bolder'}}>Return Days :</span>  {productDetails.returnPolicy}</p>
 
-<div style={{border:'1px solid black',width:'20%',textAlign:'center',cursor:'pointer'}}>Add To Cart - {productDetails.price}$ </div>
-<div style={{border:'1px solid black',width:'20%',textAlign:'center',cursor:'pointer', backgroundColor:'gold'}}>Buy It Now</div>
 </div>
 
 
@@ -63,30 +72,24 @@ const [userReviews, setUserReviews] = useState([]);
 
 
 <div>
-  <h2>Review</h2>
-
+  <h2>Customer Reviews</h2>
 <div>
-
-{userReviews.map((ele,i)=>{
-return(
-  <div style={{border:'1px solid black'}}>
-<span>{ele.reviewerName}</span>
 <div>
-<Rating name="half-rating-read" defaultValue={ele.rating} precision={0.5} readOnly />
+<div style={{border:'1px solid black'}}>
+<span style={{fontSize:'32px',fontWeight:'bold'}}>{productDetails?.rating}</span>
+<div>
+<Rating name="half-rating-read" defaultValue={productDetails?.rating} precision={0.5} readOnly />
 
 </div>
-
-<p>{ele.comment}</p>
-  </div>
-
-)
-
-
-})
+<span>{productDetails?.reviews?.length} Reviews</span>
+</div>
+</div>
 
 
 
-}
+
+
+
 </div>
 
 
